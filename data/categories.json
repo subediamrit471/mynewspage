@@ -1,0 +1,10 @@
+[
+  { "name": "Campus News", "slug": "campus-news" },
+  { "name": "Academics", "slug": "academics" },
+  { "name": "Technology", "slug": "technology" },
+  { "name": "Events", "slug": "events" },
+  { "name": "Sports", "slug": "sports" },
+  { "name": "Arts & Culture", "slug": "arts" },
+  { "name": "Opinion", "slug": "opinion" },
+  { "name": "Research", "slug": "research" }
+]
