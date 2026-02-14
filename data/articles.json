@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "title": "Welcome to Your Newspaper",
+    "author": "Editor",
+    "category": "Local",
+    "content": "This is your first article. Edit this in GitHub!",
+    "date": "February 15, 2024",
+    "featured": true,
+    "views": 0,
+    "images": []
+  }
+]
