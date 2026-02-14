@@ -1,0 +1,11 @@
+[
+  { "title": "Home", "url": "home", "order": 1 },
+  { "title": "Campus News", "url": "campus-news", "order": 2 },
+  { "title": "Academics", "url": "academics", "order": 3 },
+  { "title": "Technology", "url": "technology", "order": 4 },
+  { "title": "Events", "url": "events", "order": 5 },
+  { "title": "Sports", "url": "sports", "order": 6 },
+  { "title": "Arts", "url": "arts", "order": 7 },
+  { "title": "About", "url": "about", "order": 8 },
+  { "title": "Contact", "url": "contact", "order": 9 }
+]
