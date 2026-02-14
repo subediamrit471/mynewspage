@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Classic Chronicle • GitHub Edition</title>
+    
+    <!-- Traditional Newspaper Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e8e2d1;
+            background-image: 
+                linear-gradient(45deg, #d4cdb8 1px, transparent 1px),
+                linear-gradient(-45deg, #d4cdb8 1px, transparent 1px);
+            background-size: 30px 30px;
+            font-family: 'Source Serif 4', serif;
+        }
+
+        /* Main Newspaper */
+        .newspaper {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: #fffcf5;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid #b8a88b;
+            position: relative;
+        }
+
+        /* Vintage Paper Texture */
+        .newspaper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="1" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.08"/></svg>');
+            pointer-events: none;
+            opacity: 0.2;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            border-bottom: 3px double #8b7355;
+            background: #fffcf5;
+        }
+
+        .newspaper-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 900;
+            color: #2c1810;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            text-shadow: 3px 3px 0 #d4b28c;
+        }
+
+        .newspaper-name span {
+            font-size: 80px;
+            color: #8b4513;
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 18px;
+            color: #8b7355;
+            margin-top: 10px;
+        }
+
+        .date-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 25px;
+            background: #2c1810;
+            color: #f0e6d2;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            border-top: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: #f0e6d2;
+            padding: 15px 30px;
+            border-bottom: 2px solid #8b7355;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #2c1810;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            padding: 5px 10px;
+            transition: 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            border-bottom-color: #d4af37;
+            color: #8b4513;
+        }
+
+        /* Admin Link */
+        .admin-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .admin-link a {
+            background: #2c1810;
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            padding: 12px 25px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* GitHub Info Bar */
+        .github-info {
+            background: #f0e6d2;
+            padding: 10px 20px;
+            border-bottom: 2px solid #8b7355;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+        }
+
+        .github-info a {
+            color: #2c1810;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .github-info a:hover {
+            color: #d4af37;
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 20px 30px;
+            background: #f0e6d2;
+            border-bottom: 2px solid #8b7355;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8b7355;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border: 2px solid #8b7355;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .filter-select {
+            padding: 12px 20px;
+            border: 2px solid #8b7355;
+            font-family: 'Inter', sans-serif;
+            min-width: 150px;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .article-card {
+            background: white;
+            border-bottom: 2px solid #d4b28c;
+            padding-bottom: 20px;
+        }
+
+        .article-card.featured {
+            grid-column: span 2;
+            border-bottom: 3px solid #d4af37;
+            padding-bottom: 30px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 1px solid #d4b28c;
+        }
+
+        .article-category {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #d4af37;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c1810;
+            margin-bottom: 10px;
+        }
+
+        .article-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #8b7355;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted #d4b28c;
+        }
+
+        .article-excerpt {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #3d2a1c;
+            margin-bottom: 15px;
+            max-height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .article-excerpt::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(transparent, white);
+        }
+
+        .read-more {
+            background: none;
+            border: 2px solid #2c1810;
+            color: #2c1810;
+            padding: 8px 20px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .read-more:hover {
+            background: #2c1810;
+            color: #d4af37;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            border-left: 2px solid #d4b28c;
+            padding-left: 25px;
+        }
+
+        .sidebar-widget {
+            margin-bottom: 35px;
+        }
+
+        .widget-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #2c1810;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-list li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #d4b28c;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .category-list li:hover {
+            color: #d4af37;
+        }
+
+        .recent-item {
+            padding: 10px 0;
+            border-bottom: 1px dotted #d4b28c;
+            cursor: pointer;
+        }
+
+        .recent-item h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .recent-date {
+            font-size: 11px;
+            color: #8b7355;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding: 30px;
+            background: white;
+            border: 1px solid #d4b28c;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: #2c1810;
+            border-bottom: 3px double #8b7355;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            padding: 20px;
+        }
+
+        .page-btn {
+            padding: 8px 12px;
+            background: white;
+            border: 1px solid #8b7355;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            background: #2c1810;
+            color: #d4af37;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c1810;
+            color: #f0e6d2;
+            padding: 40px 30px;
+            border-top: 3px solid #d4af37;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            color: #d4af37;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+        }
+
+        .footer-section a {
+            color: #f0e6d2;
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            font-size: 20px;
+        }
+
+        .github-stats {
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+        .github-stats i {
+            color: #d4af37;
+            margin-right: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d4af37;
+            font-size: 13px;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 50px;
+            display: none;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #d4b28c;
+            border-top-color: #2c1810;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2c1810;
+            color: #d4af37;
+            padding: 15px 25px;
+            border: 2px solid #d4af37;
+            display: none;
+            z-index: 2000;
+        }
+
+        @media (max-width: 768px) {
+            .newspaper-name {
+                font-size: 48px;
+            }
+            
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .article-card.featured {
+                grid-column: span 1;
+            }
+            
+            .sidebar {
+                border-left: none;
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Link (Opens GitHub for editing) -->
+    <div class="admin-link">
+        <a href="#" onclick="openGitHubEditor()" id="githubEditLink">
+            <i class="fab fa-github"></i> Edit on GitHub
+        </a>
+    </div>
+
+    <!-- Main Newspaper -->
+    <div class="newspaper">
+        <div class="header">
+            <div class="newspaper-name">
+                THE <span>⚡</span> CHRONICLE
+            </div>
+            <div class="tagline">A Student Publication • GitHub Edition</div>
+        </div>
+
+        <div class="date-bar">
+            <span id="currentDate"></span>
+            <span>VOL. 1 • ISSUE 1</span>
+            <span>OPEN SOURCE</span>
+        </div>
+
+        <!-- GitHub Info Bar -->
+        <div class="github-info">
+            <span>
+                <i class="fab fa-github"></i> 
+                This site runs on GitHub Pages — Data from JSON files
+            </span>
+            <a href="#" onclick="viewOnGitHub()">
+                <i class="fab fa-github"></i> View Repository
+            </a>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-bar">
+            <ul class="nav-menu" id="mainMenu">
+                <li><a href="#" onclick="loadPage('home')" class="active">Home</a></li>
+                <li><a href="#" onclick="loadPage('local')">Local</a></li>
+                <li><a href="#" onclick="loadPage('national')">National</a></li>
+                <li><a href="#" onclick="loadPage('world')">World</a></li>
+                <li><a href="#" onclick="loadPage('business')">Business</a></li>
+                <li><a href="#" onclick="loadPage('arts')">Arts</a></li>
+                <li><a href="#" onclick="loadPage('sports')">Sports</a></li>
+            </ul>
+        </div>
+
+        <!-- Search -->
+        <div class="search-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search articles..." onkeyup="searchArticles()">
+            </div>
+            <select class="filter-select" id="categoryFilter" onchange="filterByCategory()">
+                <option value="all">All Sections</option>
+            </select>
+        </div>
+
+        <!-- Main Content -->
+        <div id="mainContent"></div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination"></div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>The Chronicle</h3>
+                    <p>Open source newspaper project for students. Edit on GitHub and publish instantly.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#" onclick="loadPage('about')">About</a></p>
+                    <p><a href="#" onclick="loadPage('contact')">Contact</a></p>
+                    <p><a href="#" onclick="loadPage('contribute')">Contribute</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>GitHub Stats</h3>
+                    <div class="github-stats">
+                        <p><i class="fab fa-github"></i> Fork this project</p>
+                        <p><i class="fas fa-code-branch"></i> Edit JSON files</p>
+                        <p><i class="fas fa-star"></i> Star on GitHub</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 The Classic Chronicle • Open Source • MIT License</p>
+                <p style="font-size: 12px; margin-top: 10px;">
+                    <i class="fab fa-github"></i> 
+                    Edit articles by editing the JSON files in your GitHub repository
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p style="margin-top: 15px;">Loading from GitHub...</p>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ========== GITHUB CONFIGURATION ==========
+        // CHANGE THESE TO MATCH YOUR GITHUB REPOSITORY
+        const GITHUB_USERNAME = "your-username"; // Replace with your GitHub username
+        const GITHUB_REPO = "chronicle-newspaper"; // Replace with your repo name
+        const GITHUB_BRANCH = "main"; // Usually main or master
+        
+        // Base URL for raw GitHub content
+        const GITHUB_RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/${GITHUB_BRANCH}/`;
+        
+        // GitHub API for editing (opens in browser)
+        const GITHUB_EDIT_BASE = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO}/edit/${GITHUB_BRANCH}/`;
+
+        // ========== DATA VARIABLES ==========
+        let articles = [];
+        let pages = [];
+        let categories = [];
+        let menuItems = [];
+        
+        let currentPage = 1;
+        let filteredArticles = [];
+        let ARTICLES_PER_PAGE = 6;
+
+        // ========== INITIALIZATION ==========
+        window.onload = function() {
+            setCurrentDate();
+            loadAllData();
+        };
+
+        function setCurrentDate() {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = 
+                new Date().toLocaleDateString('en-US', options).toUpperCase();
+        }
+
+        // ========== LOAD DATA FROM GITHUB ==========
+        async function loadAllData() {
+            showLoading(true);
+            
+            try {
+                // Load all JSON files in parallel
+                await Promise.all([
+                    loadArticles(),
+                    loadPages(),
+                    loadCategories(),
+                    loadMenu()
+                ]);
+                
+                // Initialize with defaults if empty
+                if (articles.length === 0) {
+                    articles = getDefaultArticles();
+                }
+                if (categories.length === 0) {
+                    categories = getDefaultCategories();
+                }
+                if (menuItems.length === 0) {
+                    menuItems = getDefaultMenu();
+                }
+                
+                buildMenu();
+                updateCategoryFilter();
+                loadHomePage();
+                updateGitHubLinks();
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                // Load defaults on error
+                articles = getDefaultArticles();
+                categories = getDefaultCategories();
+                menuItems = getDefaultMenu();
+                buildMenu();
+                updateCategoryFilter();
+                loadHomePage();
+                showToast('Using default data - Check GitHub configuration');
+            }
+            
+            showLoading(false);
+        }
+
+        async function loadArticles() {
+            try {
+                const response = await fetch(GITHUB_RAW_BASE + 'data/articles.json');
+                if (response.ok) {
+                    articles = await response.json();
+                }
+            } catch (e) {
+                console.log('No articles.json found, using defaults');
+            }
+        }
+
+        async function loadPages() {
+            try {
+                const response = await fetch(GITHUB_RAW_BASE + 'data/pages.json');
+                if (response.ok) {
+                    pages = await response.json();
+                }
+            } catch (e) {
+                console.log('No pages.json found');
+            }
+        }
+
+        async function loadCategories() {
+            try {
+                const response = await fetch(GITHUB_RAW_BASE + 'data/categories.json');
+                if (response.ok) {
+                    categories = await response.json();
+                }
+            } catch (e) {
+                console.log('No categories.json found, using defaults');
+            }
+        }
+
+        async function loadMenu() {
+            try {
+                const response = await fetch(GITHUB_RAW_BASE + 'data/menu.json');
+                if (response.ok) {
+                    menuItems = await response.json();
+                }
+            } catch (e) {
+                console.log('No menu.json found, using defaults');
+            }
+        }
+
+        // ========== DEFAULT DATA ==========
+        function getDefaultArticles() {
+            return [
+                {
+                    id: 1,
+                    title: "Welcome to Your GitHub Newspaper",
+                    author: "The Editor",
+                    category: "Local",
+                    content: "This newspaper runs entirely on GitHub Pages! All content comes from JSON files in your repository. To add articles, edit the articles.json file in the data folder.",
+                    date: "February 15, 2024",
+                    featured: true,
+                    views: 1234,
+                    images: []
+                },
+                {
+                    id: 2,
+                    title: "How to Add New Articles",
+                    author: "Tech Team",
+                    category: "Technology",
+                    content: "1. Go to your GitHub repository\n2. Navigate to data/articles.json\n3. Click the edit button\n4. Add your article following the JSON format\n5. Commit changes\n6. Your article appears instantly!",
+                    date: "February 14, 2024",
+                    featured: true,
+                    views: 2345,
+                    images: []
+                },
+                {
+                    id: 3,
+                    title: "Understanding JSON Format",
+                    author: "Dev Team",
+                    category: "Technology",
+                    content: "JSON (JavaScript Object Notation) is a lightweight data format. Each article needs: id, title, author, category, content, date, featured (true/false), views, and images array.",
+                    date: "February 13, 2024",
+                    featured: false,
+                    views: 3456,
+                    images: []
+                },
+                {
+                    id: 4,
+                    title: "Student News: Campus Events",
+                    author: "Campus Reporter",
+                    category: "Local",
+                    content: "This week's campus events include the Spring Festival, guest lecture series, and the annual science fair. All students are welcome to participate.",
+                    date: "February 12, 2024",
+                    featured: false,
+                    views: 4567,
+                    images: []
+                },
+                {
+                    id: 5,
+                    title: "International Education Summit",
+                    author: "World Desk",
+                    category: "World",
+                    content: "Delegates from 30 countries gathered to discuss the future of education. Key topics included digital learning, accessibility, and international student exchange.",
+                    date: "February 11, 2024",
+                    featured: false,
+                    views: 5678,
+                    images: []
+                },
+                {
+                    id: 6,
+                    title: "Basketball Team Wins Championship",
+                    author: "Sports Desk",
+                    category: "Sports",
+                    content: "In a thrilling final match, our college basketball team secured the regional championship with a last-second three-pointer.",
+                    date: "February 10, 2024",
+                    featured: true,
+                    views: 6789,
+                    images: []
+                }
+            ];
+        }
+
+        function getDefaultCategories() {
+            return [
+                { name: 'Local', slug: 'local' },
+                { name: 'National', slug: 'national' },
+                { name: 'World', slug: 'world' },
+                { name: 'Business', slug: 'business' },
+                { name: 'Technology', slug: 'technology' },
+                { name: 'Arts', slug: 'arts' },
+                { name: 'Sports', slug: 'sports' }
+            ];
+        }
+
+        function getDefaultMenu() {
+            return [
+                { title: 'Home', url: 'home', order: 1 },
+                { title: 'Local', url: 'local', order: 2 },
+                { title: 'National', url: 'national', order: 3 },
+                { title: 'World', url: 'world', order: 4 },
+                { title: 'Business', url: 'business', order: 5 },
+                { title: 'Technology', url: 'technology', order: 6 },
+                { title: 'Arts', url: 'arts', order: 7 },
+                { title: 'Sports', url: 'sports', order: 8 }
+            ];
+        }
+
+        // ========== GITHUB FUNCTIONS ==========
+        function openGitHubEditor() {
+            // Determine which file to edit based on current view
+            let fileToEdit = 'data/articles.json';
+            
+            if (currentView && currentView !== 'home') {
+                // Could open specific files based on view
+            }
+            
+            window.open(GITHUB_EDIT_BASE + fileToEdit, '_blank');
+            showToast('Opening GitHub editor...');
+        }
+
+        function viewOnGitHub() {
+            window.open(`https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO}`, '_blank');
+        }
+
+        function updateGitHubLinks() {
+            // Update all GitHub links with correct username/repo
+            const links = document.querySelectorAll('.github-info a, .admin-link a');
+            links.forEach(link => {
+                if (link.getAttribute('onclick')?.includes('openGitHubEditor')) {
+                    // Already set
+                }
+            });
+        }
+
+        // ========== MENU FUNCTIONS ==========
+        function buildMenu() {
+            const menu = document.getElementById('mainMenu');
+            menu.innerHTML = '';
+            
+            menuItems.sort((a, b) => a.order - b.order).forEach(item => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#';
+                a.textContent = item.title;
+                a.onclick = (e) => {
+                    e.preventDefault();
+                    loadPage(item.url);
+                };
+                li.appendChild(a);
+                menu.appendChild(li);
+            });
+        }
+
+        // ========== PAGE LOADING ==========
+        let currentView = 'home';
+
+        function loadPage(url) {
+            currentView = url;
+            
+            if (url === 'home') {
+                loadHomePage();
+                return;
+            }
+            
+            const page = pages.find(p => p.slug === url);
+            if (page) {
+                displayPage(page);
+                return;
+            }
+            
+            const category = categories.find(c => c.slug === url);
+            if (category) {
+                filteredArticles = articles.filter(a => a.category === category.name);
+                displayArticles();
+                return;
+            }
+            
+            loadHomePage();
+        }
+
+        function loadHomePage() {
+            filteredArticles = [...articles];
+            displayArticles();
+        }
+
+        function displayPage(page) {
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = `
+                <div class="page-content">
+                    <h1 class="page-title">${escapeHtml(page.title)}</h1>
+                    <div>${escapeHtml(page.content).replace(/\n/g, '<br>')}</div>
+                </div>
+            `;
+            document.getElementById('pagination').innerHTML = '';
+        }
+
+        // ========== ARTICLES DISPLAY ==========
+        function displayArticles() {
+            const mainContent = document.getElementById('mainContent');
+            const start = (currentPage - 1) * ARTICLES_PER_PAGE;
+            const end = start + ARTICLES_PER_PAGE;
+            const pageArticles = filteredArticles.slice(start, end);
+            
+            let html = `
+                <div class="content-wrapper">
+                    <div class="articles-grid">
+            `;
+            
+            if (pageArticles.length === 0) {
+                html += '<div style="grid-column: 1/-1; text-align: center; padding: 50px;">No articles found</div>';
+            } else {
+                pageArticles.forEach(article => {
+                    html += `
+                        <div class="article-card ${article.featured ? 'featured' : ''}">
+                            <div class="article-category">${article.category}</div>
+                            <h2 class="article-title">${escapeHtml(article.title)}</h2>
+                            <div class="article-meta">
+                                By ${escapeHtml(article.author)} | ${article.date}
+                            </div>
+                            <div class="article-excerpt">
+                                ${escapeHtml(article.content.substring(0, 150))}...
+                            </div>
+                            <button class="read-more" onclick="readFullArticle(${article.id})">
+                                Continue Reading →
+                            </button>
+                        </div>
+                    `;
+                });
+            }
+            
+            html += `
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Categories</h3>
+                            <ul class="category-list" id="sidebarCategories"></ul>
+                        </div>
+                        
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Recent Articles</h3>
+                            <div id="recentArticles"></div>
+                        </div>
+                        
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">GitHub Guide</h3>
+                            <p style="font-size: 14px;">
+                                <i class="fab fa-github"></i> To add articles:<br>
+                                1. Click "Edit on GitHub"<br>
+                                2. Edit articles.json<br>
+                                3. Commit changes<br>
+                                4. Page updates instantly
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            mainContent.innerHTML = html;
+            updateSidebarCategories();
+            updateRecentArticles();
+            updatePagination();
+        }
+
+        function updateSidebarCategories() {
+            const list = document.getElementById('sidebarCategories');
+            if (!list) return;
+            
+            list.innerHTML = '';
+            
+            categories.forEach(cat => {
+                const count = articles.filter(a => a.category === cat.name).length;
+                list.innerHTML += `
+                    <li onclick="filterByCategorySlug('${cat.slug}')">
+                        <span>${cat.name}</span>
+                        <span>${count}</span>
+                    </li>
+                `;
+            });
+        }
+
+        function filterByCategorySlug(slug) {
+            const category = categories.find(c => c.slug === slug);
+            if (category) {
+                filteredArticles = articles.filter(a => a.category === category.name);
+                currentPage = 1;
+                displayArticles();
+            }
+        }
+
+        function updateRecentArticles() {
+            const recent = document.getElementById('recentArticles');
+            if (!recent) return;
+            
+            recent.innerHTML = '';
+            
+            articles.slice(0, 5).forEach(article => {
+                recent.innerHTML += `
+                    <div class="recent-item" onclick="readFullArticle(${article.id})">
+                        <h4>${escapeHtml(article.title)}</h4>
+                        <div class="recent-date">${article.date}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredArticles.length / ARTICLES_PER_PAGE);
+            let html = '';
+            
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+            
+            document.getElementById('pagination').innerHTML = html;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            displayArticles();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function filterByCategory() {
+            const slug = document.getElementById('categoryFilter').value;
+            
+            if (slug === 'all') {
+                filteredArticles = [...articles];
+            } else {
+                const category = categories.find(c => c.slug === slug);
+                if (category) {
+                    filteredArticles = articles.filter(a => a.category === category.name);
+                }
+            }
+            
+            currentPage = 1;
+            displayArticles();
+        }
+
+        function searchArticles() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            
+            if (!query) {
+                filteredArticles = [...articles];
+            } else {
+                filteredArticles = articles.filter(a => 
+                    a.title.toLowerCase().includes(query) ||
+                    a.content.toLowerCase().includes(query) ||
+                    a.author.toLowerCase().includes(query)
+                );
+            }
+            
+            currentPage = 1;
+            displayArticles();
+        }
+
+        function readFullArticle(id) {
+            const article = articles.find(a => a.id === id);
+            if (!article) return;
+            
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>${escapeHtml(article.title)}</title>
+                    <style>
+                        body { font-family: Georgia, serif; max-width: 800px; margin: 50px auto; padding: 20px; line-height: 1.6; }
+                        h1 { font-size: 36px; color: #2c1810; }
+                        .meta { color: #666; border-bottom: 2px solid #d4af37; padding-bottom: 20px; margin-bottom: 30px; }
+                        .content { font-size: 18px; }
+                        .github-note { margin-top: 40px; padding: 20px; background: #f0e6d2; border: 1px solid #d4af37; font-size: 14px; }
+                        button { background: #2c1810; color: #d4af37; border: none; padding: 10px 20px; cursor: pointer; margin-bottom: 20px; }
+                    </style>
+                </head>
+                <body>
+                    <button onclick="window.print()">Print Article</button>
+                    <h1>${escapeHtml(article.title)}</h1>
+                    <div class="meta">By ${escapeHtml(article.author)} | ${article.date}</div>
+                    <div class="content">${escapeHtml(article.content).replace(/\n/g, '<br>')}</div>
+                    <div class="github-note">
+                        <i class="fab fa-github"></i> This article is from the GitHub repository. 
+                        To edit, go to data/articles.json in your repository.
+                    </div>
+                </body>
+                </html>
+            `);
+        }
+
+        function updateCategoryFilter() {
+            const select = document.getElementById('categoryFilter');
+            if (select) {
+                select.innerHTML = '<option value="all">All Sections</option>';
+                select.innerHTML += categories.map(c => `<option value="${c.slug}">${c.name}</option>`).join('');
+            }
+        }
+
+        // ========== UTILITIES ==========
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerHTML = message;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
