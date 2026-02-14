@@ -1,13 +1,90 @@
 [
   {
     "id": 1,
-    "title": "Welcome to Your Newspaper",
-    "author": "Editor",
-    "category": "Local",
-    "content": "This is your first article. Edit this in GitHub!",
+    "title": "Campus Library Announces 24/7 Study Hours",
+    "author": "Sarah Johnson",
+    "category": "Campus News",
+    "content": "The University Library will extend its hours to 24/7 starting next week. Students can now access study spaces, computers, and research materials at any time. 'This is in response to student feedback,' said Head Librarian Michael Chen. 'We understand that study schedules vary, and we want to support all students.' The extended hours will be in effect from March 1st through finals week. The library will also add overnight security and staff support during late hours. Coffee machines and vending areas will be restocked regularly. Students must have their ID cards to enter after 10 PM.",
     "date": "February 15, 2024",
     "featured": true,
-    "views": 0,
+    "views": 245,
+    "images": []
+  },
+  {
+    "id": 2,
+    "title": "Student Government Elections: Meet the Candidates",
+    "author": "James Wilson",
+    "category": "Campus News",
+    "content": "Five candidates are running for Student Government President this semester. The candidates include Maria Garcia, a junior majoring in Political Science, who promises better dining options and extended cafeteria hours. David Kim, a senior in Business, focuses on mental health resources and counseling services. Aisha Patel, a sophomore, advocates for more international student support. Rounding out the field are Tom Chen and Lisa Rodriguez, both proposing sustainability initiatives. Elections will be held online from March 10-15. All students are encouraged to vote. Candidate forums will be held March 5-7 in the Student Union.",
+    "date": "February 14, 2024",
+    "featured": true,
+    "views": 189,
+    "images": []
+  },
+  {
+    "id": 3,
+    "title": "New Computer Science AI Lab Opening",
+    "author": "Prof. Alan Turing",
+    "category": "Technology",
+    "content": "The Department of Computer Science is proud to announce the opening of our new AI Research Lab. Equipped with 50 high-performance workstations and the latest software, the lab will support student research in machine learning, robotics, and data science. The lab features NVIDIA GPUs, specialized AI development tools, and collaborative workspaces. 'This lab will put our students at the forefront of AI research,' said Department Chair Dr. Ada Lovelace. An open house will be held on March 5th at 2 PM. All students are welcome to attend and explore the facilities. Workshops on AI tools will be offered throughout the semester.",
+    "date": "February 13, 2024",
+    "featured": true,
+    "views": 312,
+    "images": []
+  },
+  {
+    "id": 4,
+    "title": "International Food Festival This Saturday",
+    "author": "Maria Garcia",
+    "category": "Events",
+    "content": "The annual International Food Festival returns this Saturday from 11 AM to 5 PM on the Main Quad. Student organizations from 20 countries will showcase traditional dishes, music, and dance. Highlights include Japanese sushi demonstrations, Indian curry cooking classes, and Mexican folk dancing. Tickets are $5 for students, $10 for general admission. Proceeds benefit the International Student Scholarship Fund. The festival also features a cultural fashion show at 2 PM and a world music concert at 4 PM. Don't miss this celebration of our diverse campus community!",
+    "date": "February 12, 2024",
+    "featured": false,
+    "views": 156,
+    "images": []
+  },
+  {
+    "id": 5,
+    "title": "Study Abroad Fair: Explore 30 Countries",
+    "author": "International Office",
+    "category": "Academics",
+    "content": "The Study Abroad Fair will be held next Wednesday in the Student Union Ballroom from 10 AM to 4 PM. Representatives from programs in 30 countries will be available to discuss semester and year-long exchanges. New this year: summer research opportunities in Germany, engineering programs in Japan, and business internships in London. Information sessions on scholarships and funding will be held throughout the day. 'Studying abroad transforms students' lives and careers,' said International Programs Director Sarah Martinez. Pick up your passport to adventure at the fair!",
+    "date": "February 11, 2024",
+    "featured": false,
+    "views": 98,
+    "images": []
+  },
+  {
+    "id": 6,
+    "title": "Basketball Team Heads to Championships",
+    "author": "Sports Desk",
+    "category": "Sports",
+    "content": "Our university basketball team has advanced to the regional championships after a thrilling 78-75 victory against State University. Star player Marcus Johnson scored 32 points, including the game-winning three-pointer with 2 seconds remaining. The team will face Central University next Saturday at 7 PM in the Sports Arena. 'This team has incredible heart,' said Coach Roberts. 'We're not done yet.' Students get free admission with ID. Let's pack the arena and support our team! Go Tigers!",
+    "date": "February 10, 2024",
+    "featured": true,
+    "views": 423,
+    "images": []
+  },
+  {
+    "id": 7,
+    "title": "Writing Center Offers Thesis Help",
+    "author": "Academic Support",
+    "category": "Academics",
+    "content": "The University Writing Center is now offering specialized support for senior thesis writers. Graduate tutors are available for one-on-one consultations on research, organization, and editing. New this semester: weekend hours and online appointments. 'Writing a thesis is a major undertaking, and we're here to help at every stage,' said Writing Center Director Dr. Emily White. Workshops on literature reviews, citation management, and academic style will be held throughout February. Book appointments online through the Writing Center website.",
+    "date": "February 9, 2024",
+    "featured": false,
+    "views": 67,
+    "images": []
+  },
+  {
+    "id": 8,
+    "title": "Campus Sustainability Initiative Launches",
+    "author": "Green Committee",
+    "category": "Campus News",
+    "content": "A new campus-wide sustainability initiative launches this month. 'Green Campus 2025' aims to reduce energy use by 30%, eliminate single-use plastics, and increase recycling rates. Student volunteers are needed for the recycling ambassador program and community garden projects. The initiative also includes a competition between residence halls for the lowest energy consumption. 'Every student can make a difference,' said Sustainability Coordinator Rachel Green. Kickoff event with free plants and reusable water bottles is Friday at noon on the Quad.",
+    "date": "February 8, 2024",
+    "featured": false,
+    "views": 134,
     "images": []
   }
 ]
