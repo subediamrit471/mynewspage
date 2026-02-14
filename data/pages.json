@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "About Our Newspaper",
+    "slug": "about",
+    "content": "<h2>Welcome to The Campus Chronicle</h2><p>The Campus Chronicle is the official student newspaper of University. Founded in 1923, we have been serving the campus community for over 100 years.</p><h3>Our Mission</h3><p>To inform, engage, and empower the campus community through accurate, thoughtful, and independent journalism. We provide a platform for student voices and report on issues that matter to our readers.</p><h3>Our Team</h3><p>Our staff consists entirely of students - from writers and editors to photographers and designers. We're passionate about journalism and committed to serving our fellow students.</p><h3>Get Involved</h3><p>Interested in joining? We welcome writers, photographers, designers, and business staff. No experience necessary - just enthusiasm and commitment. Email us at join@campuschronicle.com for more information.</p>",
+    "inMenu": true,
+    "date": "February 15, 2024"
+  },
+  {
+    "id": 2,
+    "title": "Contact Us",
+    "slug": "contact",
+    "content": "<h2>Get in Touch</h2><p>We'd love to hear from you! Whether you have a news tip, want to submit an opinion piece, or have questions about the newspaper, reach out to us.</p><h3>Email</h3><p><strong>Editor-in-Chief:</strong> editor@campuschronicle.com</p><p><strong>News Desk:</strong> news@campuschronicle.com</p><p><strong>Opinion:</strong> opinion@campuschronicle.com</p><p><strong>Sports:</strong> sports@campuschronicle.com</p><p><strong>Arts:</strong> arts@campuschronicle.com</p><h3>Visit Us</h3><p>Student Union Building, Room 204<br>123 University Avenue<br>College Town, ST 12345</p><h3>Phone</h3><p>(555) 123-4567</p><h3>Office Hours</h3><p>Monday-Friday: 10 AM - 6 PM<br>Saturday-Sunday: Closed</p>",
+    "inMenu": true,
+    "date": "February 15, 2024"
+  },
+  {
+    "id": 3,
+    "title": "Submission Guidelines",
+    "slug": "submit",
+    "content": "<h2>Write for Us</h2><p>We welcome submissions from all students, faculty, and staff. Here's how to submit your work:</p><h3>News Articles</h3><p>Send news tips and article pitches to news@campuschronicle.com. Please include sources and contact information.</p><h3>Opinion Pieces</h3><p>Op-eds should be 500-800 words and address current issues. Include a brief author bio and photo. Send to opinion@campuschronicle.com.</p><h3>Arts & Culture</h3><p>Reviews, profiles, and features about arts on campus. Email arts@campuschronicle.com.</p><h3>Sports</h3><p>Game recaps, player profiles, and sports features to sports@campuschronicle.com.</p><h3>Photography</h3><p>We're always looking for campus photos. Email high-resolution images to photo@campuschronicle.com with caption and credit information.</p><h3>Deadlines</h3><p>Submissions for the weekly print edition are due by Wednesday at 5 PM. Online submissions are accepted on a rolling basis.</p>",
+    "inMenu": true,
+    "date": "February 15, 2024"
+  },
+  {
+    "id": 4,
+    "title": "Join Our Team",
+    "slug": "join",
+    "content": "<h2>Become a Staff Member</h2><p>The Campus Chronicle is always looking for talented and motivated students to join our team. No prior experience necessary - we'll train you!</p><h3>Available Positions</h3><ul><li><strong>Staff Writers:</strong> Cover news, features, sports, or arts</li><li><strong>Copy Editors:</strong> Review and edit articles</li><li><strong>Photographers:</strong> Capture campus events and portraits</li><li><strong>Designers:</strong> Layout and graphics for print and web</li><li><strong>Social Media Team:</strong> Manage our online presence</li><li><strong>Business Staff:</strong> Advertising and circulation</li></ul><h3>Benefits</h3><ul><li>Gain real journalism experience</li><li>Build your portfolio</li><li>Flexible hours that work with your class schedule</li><li>Make friends and connections across campus</li><li>Free pizza at our weekly meetings!</li></ul><h3>How to Apply</h3><p>Email us at join@campuschronicle.com with your name, year, major, and area of interest. We'll invite you to our next new member orientation.</p>",
+    "inMenu": true,
+    "date": "February 15, 2024"
+  },
+  {
+    "id": 5,
+    "title": "Advertising",
+    "slug": "advertise",
+    "content": "<h2>Advertise With Us</h2><p>Reach thousands of students, faculty, and staff through our print and digital platforms.</p><h3>Print Advertising</h3><p>Our weekly newspaper reaches 10,000 readers across campus. Full-page, half-page, and quarter-page ads available.</p><h3>Digital Advertising</h3><p>Website banner ads, newsletter sponsorships, and social media promotions.</p><h3>Rates</h3><p>Contact our advertising department for current rates and special student organization discounts.</p><h3>Contact</h3><p>Email: ads@campuschronicle.com<br>Phone: (555) 123-4568</p>",
+    "inMenu": false,
+    "date": "February 15, 2024"
+  }
+]
