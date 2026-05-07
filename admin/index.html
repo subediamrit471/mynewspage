@@ -3,106 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Study Chronicle</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>The Study Chronicle | Modern Learning Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        .admin-panel {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #d4c5a9;
-            font-family: 'Indie Flower', cursive;
-            font-size: 16px;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f7fafc;
+            color: #1a202c;
         }
-        .login-form {
+
+        /* Header */
+        .site-header {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .logo p {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        /* Navigation */
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .main-nav a:hover {
+            color: #4299e1;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #4299e1;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #4299e1;
+            color: #4299e1;
+        }
+
+        .btn-outline:hover {
+            background: #4299e1;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
             text-align: center;
         }
-        .password-input {
-            font-family: monospace;
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 80px;
+            background: white;
+            z-index: 90;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4299e1;
+        }
+
+        .stat-label {
+            color: #4a5568;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #4299e1;
+            border-radius: 2px;
+        }
+
+        /* Article Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Article Card */
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+
+        .article-content {
+            padding: 25px;
+        }
+
+        .article-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #ebf8ff;
+            color: #4299e1;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            color: #1a202c;
+        }
+
+        .article-excerpt {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .read-more:hover {
+            gap: 12px;
+        }
+
+        /* Modal for Full Article */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            position: relative;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background: red;
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .modal-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2d3748;
+        }
+
+        /* Admin Panel Access */
+        .admin-floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4299e1;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 90;
+        }
+
+        .admin-floating-btn:hover {
+            transform: scale(1.1);
+            background: #3182ce;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="admin-panel" id="loginPanel">
-        <h1>🔐 Admin Login</h1>
-        <p>Enter your password to add study content</p>
-        <input type="password" id="password" class="password-input" placeholder="Enter admin password">
-        <button onclick="login()" class="tool-btn">Login</button>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>📚 The Study Chronicle</h1>
+                <p>Your Daily Learning Companion</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" onclick="showHome()">🏠 Home</a></li>
+                    <li><a href="#" onclick="showCategory('academics')">📖 Academics</a></li>
+                    <li><a href="#" onclick="showCategory('technology')">💻 Technology</a></li>
+                    <li><a href="#" onclick="showCategory('campus')">🎓 Campus</a></li>
+                    <li><a href="#" onclick="showCommonplaceBook()">📔 My Commonplace Book</a></li>
+                </ul>
+            </nav>
+            <div class="action-buttons">
+                <a href="admin/index.html" class="btn btn-outline">
+                    <i class="fas fa-lock"></i> Admin Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>📖 Knowledge at Your Fingertips</h1>
+        <p>Curated study materials, news, and resources for modern learners</p>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <i class="fas fa-newspaper" style="font-size: 24px; color: #4299e1;"></i>
+            <div>
+                <div class="stat-number" id="articleCount">0</div>
+                <div class="stat-label">Articles</div>
+            </div>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-fire" style="font-size: 24px; color: #f59e0b;"></i>
+            <div>
+                <div class="stat-number" id="streakCount">0</div>
+                <div class="stat-label">Day Streak</div>
+            </div>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-bookmark" style="font-size: 24px; color: #10b981;"></i>
+            <div>
+                <div class="stat-number" id="clipCount">0</div>
+                <div class="stat-label">Saved Notes</div>
+            </div>
+        </div>
+        <button onclick="incrementStreak()" class="btn btn-primary" style="padding: 8px 16px;">
+            <i class="fas fa-check"></i> Check-in Today
+        </button>
     </div>
-    
-    <div class="admin-panel" id="dashboardPanel" style="display:none;">
-        <h1>✍️ Add Study Content</h1>
-        <form id="contentForm">
-            <input type="text" id="title" placeholder="Article Title" required>
-            <textarea id="content" rows="10" placeholder="Write your study content here... (supports markdown)"></textarea>
-            <input type="text" id="imageUrl" placeholder="Image URL (optional)">
-            <button type="submit" class="tool-btn">📤 Publish to Website</button>
-        </form>
-        <hr style="margin: 20px 0;">
-        <h2>📊 Quick Stats</h2>
-        <p>Study Streak: <span id="adminStreak"></span></p>
-        <p>Commonplace Clips: <span id="adminClips"></span></p>
-        <button onclick="logout()" style="background:#dc3545;">🚪 Logout</button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h2 class="section-title">📰 Latest Articles</h2>
+        <div class="articles-grid" id="articlesGrid">
+            <!-- Articles will load here -->
+            <div style="text-align: center; padding: 50px;">Loading amazing content...</div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 The Study Chronicle | Empowering Students Worldwide</p>
+        <p style="margin-top: 10px; opacity: 0.7;">✍️ Read, Learn, Grow</p>
+    </footer>
+
+    <!-- Floating Admin Button -->
+    <div class="admin-floating-btn" onclick="window.location.href='admin/index.html'">
+        <i class="fas fa-pen" style="font-size: 24px;"></i>
     </div>
-    
-    <script>
-        const ADMIN_PASSWORD = 'study123'; // CHANGE THIS PASSWORD!
-        
-        function login() {
-            const pwd = document.getElementById('password').value;
-            if (pwd === ADMIN_PASSWORD) {
-                localStorage.setItem('isAdminLoggedIn', 'true');
-                document.getElementById('loginPanel').style.display = 'none';
-                document.getElementById('dashboardPanel').style.display = 'block';
-                loadStats();
-            } else {
-                alert('Wrong password!');
-            }
-        }
-        
-        function loadStats() {
-            const streak = localStorage.getItem('studyStreak') || 0;
-            const clips = JSON.parse(localStorage.getItem('commonplaceClips') || '[]');
-            document.getElementById('adminStreak').innerText = streak;
-            document.getElementById('adminClips').innerText = clips.length;
-        }
-        
-        document.getElementById('contentForm').onsubmit = function(e) {
-            e.preventDefault();
-            const newArticle = {
-                title: document.getElementById('title').value,
-                content: document.getElementById('content').value,
-                image: document.getElementById('imageUrl').value,
-                summary: document.getElementById('content').value.substring(0, 150)
-            };
-            
-            // Save to localStorage for now (you can later save to JSON file)
-            const articles = JSON.parse(localStorage.getItem('studyArticles') || '[]');
-            articles.unshift(newArticle);
-            localStorage.setItem('studyArticles', JSON.stringify(articles));
-            
-            alert('✅ Content published! It will appear on the main page.');
-            this.reset();
-        };
-        
-        function logout() {
-            localStorage.removeItem('isAdminLoggedIn');
-            window.location.href = '../index.html';
-        }
-        
-        // Check if already logged in
-        if (localStorage.getItem('isAdminLoggedIn') === 'true') {
-            document.getElementById('loginPanel').style.display = 'none';
-            document.getElementById('dashboardPanel').style.display = 'block';
-            loadStats();
-        }
-    </script>
+
+    <script src="js/main.js"></script>
+    <script src="js/commonplace.js"></script>
 </body>
 </html>
