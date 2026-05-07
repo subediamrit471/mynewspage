@@ -3,106 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Study Chronicle</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Admin Dashboard - Create Articles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        .admin-panel {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f7fafc;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 12px;
+            margin-bottom: 30px;
         }
-        input, textarea {
+
+        .form-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+
+        input, select, textarea {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #d4c5a9;
-            font-family: 'Indie Flower', cursive;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
             font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
         }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #4299e1;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #4299e1;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3182ce;
+        }
+
+        .btn-danger {
+            background: #e53e3e;
+            color: white;
+        }
+
+        .btn-success {
+            background: #48bb78;
+            color: white;
+        }
+
+        .articles-list {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .article-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .article-item:last-child {
+            border-bottom: none;
+        }
+
+        .article-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .article-info p {
+            color: #718096;
+            font-size: 14px;
+        }
+
         .login-form {
-            text-align: center;
-        }
-        .password-input {
-            font-family: monospace;
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
-    <div class="admin-panel" id="loginPanel">
-        <h1>🔐 Admin Login</h1>
-        <p>Enter your password to add study content</p>
-        <input type="password" id="password" class="password-input" placeholder="Enter admin password">
-        <button onclick="login()" class="tool-btn">Login</button>
+
+<div id="loginPanel" class="login-form">
+    <h2 style="margin-bottom: 20px;">🔐 Admin Login</h2>
+    <p style="margin-bottom: 20px; color: #718096;">Enter password to manage articles</p>
+    <input type="password" id="adminPassword" placeholder="Enter password" style="margin-bottom: 20px;">
+    <button onclick="login()" class="btn btn-primary" style="width: 100%;">Login</button>
+    <p style="margin-top: 20px; font-size: 12px; color: #cbd5e0;">Default password: <strong>admin123</strong></p>
+</div>
+
+<div id="dashboardPanel" style="display: none;">
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-pen"></i> Study Chronicle Admin</h1>
+            <p>Create and manage your study articles</p>
+            <button onclick="logout()" class="btn btn-danger" style="margin-top: 15px;">🚪 Logout</button>
+        </div>
+
+        <!-- Create Article Form -->
+        <div class="form-card">
+            <h2 style="margin-bottom: 20px;">📝 Create New Article</h2>
+            <form id="articleForm">
+                <div class="form-group">
+                    <label>Article Title</label>
+                    <input type="text" id="title" required placeholder="Enter catchy title...">
+                </div>
+                
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="academics">📚 Academics</option>
+                        <option value="technology">💻 Technology</option>
+                        <option value="campus">🏫 Campus</option>
+                        <option value="general">📰 General</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="text" id="imageUrl" placeholder="https://images.unsplash.com/...">
+                    <small style="color: #718096;">Use free images from Unsplash or Pexels</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Short Excerpt (120 chars max)</label>
+                    <input type="text" id="excerpt" required placeholder="Brief summary...">
+                </div>
+                
+                <div class="form-group">
+                    <label>Full Article Content</label>
+                    <textarea id="content" required placeholder="Write your detailed article here... Supports HTML formatting"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Author Name</label>
+                    <input type="text" id="author" placeholder="Your name">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">📤 Publish Article</button>
+            </form>
+        </div>
+
+        <!-- Manage Articles -->
+        <div class="articles-list">
+            <h2 style="margin-bottom: 20px;">📋 Manage Articles (<span id="articleCount">0</span>)</h2>
+            <div id="articlesList"></div>
+        </div>
     </div>
+</div>
+
+<script>
+    const ADMIN_PASSWORD = 'admin123'; // Change this to your password
     
-    <div class="admin-panel" id="dashboardPanel" style="display:none;">
-        <h1>✍️ Add Study Content</h1>
-        <form id="contentForm">
-            <input type="text" id="title" placeholder="Article Title" required>
-            <textarea id="content" rows="10" placeholder="Write your study content here... (supports markdown)"></textarea>
-            <input type="text" id="imageUrl" placeholder="Image URL (optional)">
-            <button type="submit" class="tool-btn">📤 Publish to Website</button>
-        </form>
-        <hr style="margin: 20px 0;">
-        <h2>📊 Quick Stats</h2>
-        <p>Study Streak: <span id="adminStreak"></span></p>
-        <p>Commonplace Clips: <span id="adminClips"></span></p>
-        <button onclick="logout()" style="background:#dc3545;">🚪 Logout</button>
-    </div>
-    
-    <script>
-        const ADMIN_PASSWORD = 'study123'; // CHANGE THIS PASSWORD!
-        
-        function login() {
-            const pwd = document.getElementById('password').value;
-            if (pwd === ADMIN_PASSWORD) {
-                localStorage.setItem('isAdminLoggedIn', 'true');
-                document.getElementById('loginPanel').style.display = 'none';
-                document.getElementById('dashboardPanel').style.display = 'block';
-                loadStats();
-            } else {
-                alert('Wrong password!');
-            }
-        }
-        
-        function loadStats() {
-            const streak = localStorage.getItem('studyStreak') || 0;
-            const clips = JSON.parse(localStorage.getItem('commonplaceClips') || '[]');
-            document.getElementById('adminStreak').innerText = streak;
-            document.getElementById('adminClips').innerText = clips.length;
-        }
-        
-        document.getElementById('contentForm').onsubmit = function(e) {
-            e.preventDefault();
-            const newArticle = {
-                title: document.getElementById('title').value,
-                content: document.getElementById('content').value,
-                image: document.getElementById('imageUrl').value,
-                summary: document.getElementById('content').value.substring(0, 150)
-            };
-            
-            // Save to localStorage for now (you can later save to JSON file)
-            const articles = JSON.parse(localStorage.getItem('studyArticles') || '[]');
-            articles.unshift(newArticle);
-            localStorage.setItem('studyArticles', JSON.stringify(articles));
-            
-            alert('✅ Content published! It will appear on the main page.');
-            this.reset();
-        };
-        
-        function logout() {
-            localStorage.removeItem('isAdminLoggedIn');
-            window.location.href = '../index.html';
-        }
-        
-        // Check if already logged in
-        if (localStorage.getItem('isAdminLoggedIn') === 'true') {
+    function login() {
+        const pwd = document.getElementById('adminPassword').value;
+        if (pwd === ADMIN_PASSWORD) {
+            localStorage.setItem('adminLoggedIn', 'true');
             document.getElementById('loginPanel').style.display = 'none';
             document.getElementById('dashboardPanel').style.display = 'block';
-            loadStats();
+            loadArticlesForAdmin();
+        } else {
+            alert('Wrong password! Try: admin123');
         }
-    </script>
+    }
+    
+    function logout() {
+        localStorage.removeItem('adminLoggedIn');
+        location.reload();
+    }
+    
+    // Check if already logged in
+    if (localStorage.getItem('adminLoggedIn') === 'true') {
+        document.getElementById('loginPanel').style.display = 'none';
+        document.getElementById('dashboardPanel').style.display = 'block';
+        loadArticlesForAdmin();
+    }
+    
+    // Handle article submission
+    document.getElementById('articleForm').onsubmit = function(e) {
+        e.preventDefault();
+        
+        const newArticle = {
+            id: Date.now(),
+            title: document.getElementById('title').value,
+            category: document.getElementById('category').value,
+            image: document.getElementById('imageUrl').value || 'https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600',
+            excerpt: document.getElementById('excerpt').value,
+            content: document.getElementById('content').value,
+            author: document.getElementById('author').value || 'Admin',
+            date: new Date().toISOString()
+        };
+        
+        // Get existing articles
+        let articles = JSON.parse(localStorage.getItem('studyArticles') || '[]');
+        articles.unshift(newArticle);
+        localStorage.setItem('studyArticles', JSON.stringify(articles));
+        
+        alert('✅ Article published successfully!');
+        this.reset();
+        loadArticlesForAdmin();
+    };
+    
+    function loadArticlesForAdmin() {
+        const articles = JSON.parse(localStorage.getItem('studyArticles') || '[]');
+        document.getElementById('articleCount').innerText = articles.length;
+        
+        const container = document.getElementById('articlesList');
+        if (articles.length === 0) {
+            container.innerHTML = '<p style="text-align: center; color: #718096;">No articles yet. Create your first one above!</p>';
+            return;
+        }
+        
+        container.innerHTML = articles.map((article, index) => `
+            <div class="article-item">
+                <div class="article-info">
+                    <h4>${article.title}</h4>
+                    <p>${new Date(article.date).toLocaleDateString()} • ${article.category}</p>
+                </div>
+                <button onclick="deleteArticle(${index})" class="btn btn-danger">Delete</button>
+            </div>
+        `).join('');
+    }
+    
+    function deleteArticle(index) {
+        if (confirm('Delete this article permanently?')) {
+            let articles = JSON.parse(localStorage.getItem('studyArticles') || '[]');
+            articles.splice(index, 1);
+            localStorage.setItem('studyArticles', JSON.stringify(articles));
+            loadArticlesForAdmin();
+            alert('Article deleted');
+        }
+    }
+</script>
+
 </body>
 </html>
