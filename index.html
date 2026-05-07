@@ -646,272 +646,298 @@
         <p>© 2026 Study Chronicle — Read with purpose.</p>
     </footer>
 
-    <script>
-        // ========== DATA & STATE ==========
-        let allArticles = [];
-        let currentFilter = 'all';
+   <script>
+    // ========== DATA & STATE ==========
+    let allArticles = [];
+    let currentFilter = 'all';
 
-        // ========== LOAD ARTICLES ==========
-        function loadArticles() {
-            const saved = localStorage.getItem('studyArticles');
-            if (saved && JSON.parse(saved).length > 0) {
-                allArticles = JSON.parse(saved);
-            } else {
-                // Default premium articles
-                allArticles = [
-                    {
-                        id: 1,
-                        title: "The Science of Deep Learning",
-                        excerpt: "How your brain actually retains information — and the habits that rewire it for peak performance.",
-                        content: "<p>For decades, we've misunderstood how learning works. The old model of repetition and review has been replaced by something far more nuanced...</p><p>Neuroplasticity—the brain's ability to reorganize itself—is the foundation of all learning. When you learn something new, your neurons form new connections. These connections strengthen with use and fade without it.</p><p>The key insight? Active recall and spaced repetition aren't just study techniques—they're biological necessities for memory formation.</p>",
-                        image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600",
-                        category: "academics",
-                        date: new Date().toISOString(),
-                        author: "Dr. Sarah Chen"
-                    },
-                    {
-                        id: 2,
-                        title: "Beyond the Algorithm: AI in Education",
-                        excerpt: "How artificial intelligence is becoming a personalized tutor for millions of students worldwide.",
-                        content: "<p>The classroom of tomorrow is already here. AI tutors can now adapt to your learning pace, identify gaps in understanding, and provide instant feedback—all without judgment.</p><p>Tools like Khanmigo, ChatGPT, and Claude are transforming self-directed learning. Students who use these tools report higher engagement and better retention.</p><p>But the real revolution isn't the technology—it's the access. For the first time, every student can have a personal tutor available 24/7.</p>",
-                        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600",
-                        category: "technology",
-                        date: new Date().toISOString(),
-                        author: "Marcus Wright"
-                    },
-                    {
-                        id: 3,
-                        title: "The Library of the Future",
-                        excerpt: "Campus libraries are transforming from quiet warehouses to vibrant learning hubs—here's what's changing.",
-                        content: "<p>Gone are the days of dusty stacks and stern librarians. Today's academic libraries are collaboration spaces, digital media labs, and innovation centers.</p><p>From 3D printing to podcast studios, libraries are becoming the heart of campus innovation. Students can now check out laptops, cameras, and even VR equipment.</p><p>The quiet study room isn't disappearing—it's just getting competition from group collaboration spaces, presentation practice rooms, and digital scholarship centers.</p>",
-                        image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600",
-                        category: "campus",
-                        date: new Date().toISOString(),
-                        author: "Elena Rodriguez"
-                    },
-                    {
-                        id: 4,
-                        title: "Reading Better: A Guide",
-                        excerpt: "Speed isn't everything. Here's how to read with depth, retention, and joy.",
-                        content: "<p>Most of us read the wrong way. We scan, we skim, we scroll—but we don't truly absorb. The best readers are slow, intentional, and curious.</p><p>Research shows that reading on paper improves comprehension compared to screens. But digital tools offer advantages like highlighting, note-taking, and search.</p><p>The solution? Hybrid reading: use digital for discovery and annotation, print for deep dives and retention.</p>",
-                        image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600",
-                        category: "academics",
-                        date: new Date().toISOString(),
-                        author: "James Clear"
-                    },
-                    {
-                        id: 5,
-                        title: "Why Handwritten Notes Work",
-                        excerpt: "The cognitive benefits of putting pen to paper—backed by neuroscience.",
-                        content: "<p>Typing is faster, but handwriting is better for memory. Studies show that students who take handwritten notes retain more information than those who type.</p><p>Why? Writing by hand forces your brain to process and paraphrase information rather than transcribing it verbatim. That extra processing creates stronger neural pathways.</p><p>Digital tools have their place, but don't abandon your notebook just yet.</p>",
-                        image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600",
-                        category: "academics",
-                        date: new Date().toISOString(),
-                        author: "Natalie Wong"
-                    },
-                    {
-                        id: 6,
-                        title: "The Attention Economy",
-                        excerpt: "How social media is rewiring your focus—and how to take it back.",
-                        content: "<p>Your attention is being fought over by the world's smartest engineers. Every notification, every infinite scroll, every autoplay video is designed to keep you engaged.</p><p>But you can fight back. Digital minimalism, focus modes, and scheduled distraction time can help you reclaim your attention for what matters.</p><p>Start small: one hour of phone-free deep work each morning. The results may surprise you.</p>",
-                        image: "https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600",
-                        category: "technology",
-                        date: new Date().toISOString(),
-                        author: "Johann Hari"
-                    }
-                ];
-                saveArticles();
-            }
-            renderAll();
-            updateStats();
+    // ========== LOAD ARTICLES ==========
+    function loadArticles() {
+        const saved = localStorage.getItem('studyArticles');
+        if (saved && JSON.parse(saved).length > 0) {
+            allArticles = JSON.parse(saved);
+        } else {
+            // Default articles
+            allArticles = [
+                {
+                    id: 1,
+                    title: "The Science of Deep Learning",
+                    excerpt: "How your brain actually retains information — and the habits that rewire it for peak performance.",
+                    content: "<p>For decades, we've misunderstood how learning works. The old model of repetition and review has been replaced by something far more nuanced. Neuroplasticity—the brain's ability to reorganize itself—is the foundation of all learning.</p><p>The key insight? Active recall and spaced repetition aren't just study techniques—they're biological necessities for memory formation.</p>",
+                    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600",
+                    category: "academics",
+                    date: new Date().toISOString(),
+                    author: "Dr. Sarah Chen"
+                },
+                {
+                    id: 2,
+                    title: "Beyond the Algorithm: AI in Education",
+                    excerpt: "How artificial intelligence is becoming a personalized tutor for millions of students worldwide.",
+                    content: "<p>The classroom of tomorrow is already here. AI tutors can now adapt to your learning pace, identify gaps in understanding, and provide instant feedback—all without judgment.</p><p>Tools like ChatGPT and Claude are transforming self-directed learning. Students who use these tools report higher engagement and better retention.</p>",
+                    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600",
+                    category: "technology",
+                    date: new Date().toISOString(),
+                    author: "Marcus Wright"
+                },
+                {
+                    id: 3,
+                    title: "The Library of the Future",
+                    excerpt: "Campus libraries are transforming from quiet warehouses to vibrant learning hubs.",
+                    content: "<p>Gone are the days of dusty stacks. Today's academic libraries are collaboration spaces, digital media labs, and innovation centers.</p><p>From 3D printing to podcast studios, libraries are becoming the heart of campus innovation.</p>",
+                    image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600",
+                    category: "campus",
+                    date: new Date().toISOString(),
+                    author: "Elena Rodriguez"
+                },
+                {
+                    id: 4,
+                    title: "Reading Better: A Guide",
+                    excerpt: "Speed isn't everything. Here's how to read with depth, retention, and joy.",
+                    content: "<p>Most of us read the wrong way. We scan, we skim, we scroll—but we don't truly absorb. The best readers are slow, intentional, and curious.</p><p>Research shows that reading on paper improves comprehension compared to screens. Hybrid reading: use digital for discovery, print for deep dives.</p>",
+                    image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600",
+                    category: "academics",
+                    date: new Date().toISOString(),
+                    author: "James Clear"
+                },
+                {
+                    id: 5,
+                    title: "Why Handwritten Notes Work",
+                    excerpt: "The cognitive benefits of putting pen to paper—backed by neuroscience.",
+                    content: "<p>Typing is faster, but handwriting is better for memory. Studies show that students who take handwritten notes retain more information than those who type.</p><p>Writing by hand forces your brain to process and paraphrase information rather than transcribing it verbatim.</p>",
+                    image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600",
+                    category: "academics",
+                    date: new Date().toISOString(),
+                    author: "Natalie Wong"
+                },
+                {
+                    id: 6,
+                    title: "The Attention Economy",
+                    excerpt: "How social media is rewiring your focus—and how to take it back.",
+                    content: "<p>Your attention is being fought over by the world's smartest engineers. Every notification is designed to keep you engaged.</p><p>Digital minimalism, focus modes, and scheduled distraction time can help you reclaim your attention for what matters.</p>",
+                    image: "https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600",
+                    category: "technology",
+                    date: new Date().toISOString(),
+                    author: "Johann Hari"
+                }
+            ];
+            saveArticles();
         }
+        renderAll();
+        updateStats();
+    }
 
-        function saveArticles() {
-            localStorage.setItem('studyArticles', JSON.stringify(allArticles));
+    function saveArticles() {
+        localStorage.setItem('studyArticles', JSON.stringify(allArticles));
+    }
+
+    // Helper function to escape HTML
+    function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // ========== OPEN ARTICLE MODAL (FIXED - WORKING) ==========
+    function openArticle(articleId) {
+        console.log('Opening article:', articleId);
+        const article = allArticles.find(a => a.id === articleId);
+        if (!article) {
+            console.error('Article not found:', articleId);
+            return;
         }
-
-        // ========== RENDER FUNCTIONS ==========
-        function renderAll() {
-            renderFeatured();
-            renderLatestGrid();
-            renderMustRead();
-        }
-
-        function renderFeatured() {
-            const container = document.getElementById('featuredSection');
-            if (allArticles.length === 0) {
-                container.innerHTML = '';
-                return;
-            }
-            const featured = allArticles[0];
-            container.innerHTML = `
-                <div class="featured-article" onclick="openArticle(${featured.id})">
-                    <div class="featured-content">
-                        <div class="featured-tag">Featured</div>
-                        <h2 class="featured-title">${featured.title}</h2>
-                        <p class="featured-excerpt">${featured.excerpt}</p>
-                        <div class="featured-meta">
-                            <span><i class="far fa-user"></i> ${featured.author}</span>
-                            <span><i class="far fa-calendar"></i> ${new Date(featured.date).toLocaleDateString()}</span>
-                        </div>
-                    </div>
-                    <img src="${featured.image}" class="featured-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
-                </div>
-            `;
-        }
-
-        function renderLatestGrid() {
-            const container = document.getElementById('articlesGrid');
-            const filtered = currentFilter === 'all' ? allArticles.slice(1, 7) : allArticles.filter(a => a.category === currentFilter).slice(0, 6);
-            
-            if (filtered.length === 0) {
-                container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px;">No articles found.</div>';
-                return;
-            }
-
-            container.innerHTML = filtered.map(article => `
-                <div class="card-large" onclick="openArticle(${article.id})">
-                    <img src="${article.image}" class="card-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
-                    <div class="card-content">
-                        <div class="card-category">${article.category}</div>
-                        <h3 class="card-title">${article.title}</h3>
-                        <p class="card-excerpt">${article.excerpt.substring(0, 100)}...</p>
-                        <span class="card-readmore">Read more →</span>
+        
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+            <div class="modal-container">
+                <img src="${article.image || 'https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'}" class="modal-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
+                <div class="modal-body">
+                    <div class="modal-category">${(article.category || 'general').toUpperCase()}</div>
+                    <h1 class="modal-title">${escapeHtml(article.title)}</h1>
+                    <div class="modal-meta">${new Date(article.date).toLocaleDateString()} · by ${escapeHtml(article.author || 'Study Chronicle')}</div>
+                    <div class="modal-text">${article.content || article.excerpt || 'No content available'}</div>
+                    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
+                        <button onclick="clipToCommonplace('${escapeHtml(article.title).replace(/'/g, "\\'")}', '${escapeHtml(article.excerpt || '').replace(/'/g, "\\'")}')" style="background:#1a1a1a; color:white; border:none; padding:12px 24px; border-radius:40px; cursor:pointer; font-size:14px;">
+                            📌 Save to Commonplace Book
+                        </button>
                     </div>
                 </div>
-            `).join('');
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+    }
+
+    // ========== RENDER FUNCTIONS ==========
+    function renderAll() {
+        renderFeatured();
+        renderLatestGrid();
+        renderMustRead();
+    }
+
+    function renderFeatured() {
+        const container = document.getElementById('featuredSection');
+        if (allArticles.length === 0) {
+            container.innerHTML = '';
+            return;
         }
-
-        function renderMustRead() {
-            const container = document.getElementById('mustReadGrid');
-            const mustReadArticles = allArticles.slice(3, 7);
-            
-            if (mustReadArticles.length === 0) {
-                container.innerHTML = '';
-                return;
-            }
-
-            container.innerHTML = mustReadArticles.map(article => `
-                <div class="card-horizontal" onclick="openArticle(${article.id})">
-                    <img src="${article.image}" class="card-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
-                    <div class="card-content">
-                        <div class="card-category">${article.category}</div>
-                        <h3 class="card-title">${article.title}</h3>
-                        <p class="card-excerpt">${article.excerpt.substring(0, 120)}...</p>
-                        <span class="card-readmore">Continue reading →</span>
+        const featured = allArticles[0];
+        container.innerHTML = `
+            <div class="featured-article" onclick="openArticle(${featured.id})">
+                <div class="featured-content">
+                    <div class="featured-tag">Featured</div>
+                    <h2 class="featured-title">${escapeHtml(featured.title)}</h2>
+                    <p class="featured-excerpt">${escapeHtml(featured.excerpt)}</p>
+                    <div class="featured-meta">
+                        <span><i class="far fa-user"></i> ${escapeHtml(featured.author)}</span>
+                        <span><i class="far fa-calendar"></i> ${new Date(featured.date).toLocaleDateString()}</span>
                     </div>
                 </div>
-            `).join('');
+                <img src="${featured.image}" class="featured-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
+            </div>
+        `;
+    }
+
+    function renderLatestGrid() {
+        const container = document.getElementById('articlesGrid');
+        const filtered = currentFilter === 'all' ? allArticles.slice(1, 7) : allArticles.filter(a => a.category === currentFilter).slice(0, 6);
+        
+        if (filtered.length === 0) {
+            container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px;">No articles found.</div>';
+            return;
         }
 
-        // ========== FILTER FUNCTION ==========
-        function filterArticles(category) {
-            currentFilter = category;
-            renderLatestGrid();
-            document.querySelector('.hero h2').innerHTML = category === 'all' ? 'Knowledge,<br>beautifully curated.' : `${category.charAt(0).toUpperCase() + category.slice(1)}<br>exploring ${category}`;
-            window.scrollTo({ top: 300, behavior: 'smooth' });
-        }
-
-        // ========== OPEN ARTICLE MODAL ==========
-        function openArticle(articleId) {
-            const article = allArticles.find(a => a.id === articleId);
-            if (!article) return;
-
-            const modal = document.createElement('div');
-            modal.className = 'modal';
-            modal.innerHTML = `
-                <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
-                <div class="modal-container">
-                    <img src="${article.image}" class="modal-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
-                    <div class="modal-body">
-                        <div class="modal-category">${article.category.toUpperCase()}</div>
-                        <h1 class="modal-title">${article.title}</h1>
-                        <div class="modal-meta">${new Date(article.date).toLocaleDateString()} · by ${article.author}</div>
-                        <div class="modal-text">${article.content}</div>
-                        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
-                            <button onclick="clipToCommonplace('${article.title.replace(/'/g, "\\'")}', '${article.excerpt.replace(/'/g, "\\'")}')" style="background:#1a1a1a; color:white; border:none; padding:12px 24px; border-radius:40px; cursor:pointer; font-size:14px;">
-                                📌 Save to Commonplace Book
-                            </button>
-                        </div>
-                    </div>
+        container.innerHTML = filtered.map(article => `
+            <div class="card-large" onclick="openArticle(${article.id})">
+                <img src="${article.image}" class="card-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
+                <div class="card-content">
+                    <div class="card-category">${article.category || 'general'}</div>
+                    <h3 class="card-title">${escapeHtml(article.title)}</h3>
+                    <p class="card-excerpt">${escapeHtml(article.excerpt).substring(0, 100)}...</p>
+                    <span class="card-readmore">Read more →</span>
                 </div>
-            `;
-            document.body.appendChild(modal);
-            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+            </div>
+        `).join('');
+    }
+
+    function renderMustRead() {
+        const container = document.getElementById('mustReadGrid');
+        const mustReadArticles = allArticles.slice(3, 7);
+        
+        if (mustReadArticles.length === 0) {
+            container.innerHTML = '';
+            return;
         }
 
-        // ========== STUDY STREAK ==========
-        function setupStudyStreak() {
-            let streak = localStorage.getItem('studyStreak') || 0;
-            document.getElementById('streakCount').innerText = streak;
+        container.innerHTML = mustReadArticles.map(article => `
+            <div class="card-horizontal" onclick="openArticle(${article.id})">
+                <img src="${article.image}" class="card-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
+                <div class="card-content">
+                    <div class="card-category">${article.category || 'general'}</div>
+                    <h3 class="card-title">${escapeHtml(article.title)}</h3>
+                    <p class="card-excerpt">${escapeHtml(article.excerpt).substring(0, 120)}...</p>
+                    <span class="card-readmore">Continue reading →</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // ========== FILTER FUNCTION ==========
+    function filterArticles(category) {
+        currentFilter = category;
+        renderLatestGrid();
+        const heroTitle = document.querySelector('.hero h2');
+        if (heroTitle) {
+            heroTitle.innerHTML = category === 'all' ? 'Knowledge,<br>beautifully curated.' : `${category.charAt(0).toUpperCase() + category.slice(1)}<br>exploring ${category}`;
         }
+        window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
 
-        function incrementStreak() {
-            let streak = parseInt(localStorage.getItem('studyStreak') || 0);
-            const lastCheck = localStorage.getItem('lastStreakDate');
-            const today = new Date().toDateString();
-            
-            if (lastCheck === today) {
-                alert("✅ You've already checked in today! Come back tomorrow.");
-                return;
-            }
-            
-            streak++;
-            localStorage.setItem('studyStreak', streak);
-            localStorage.setItem('lastStreakDate', today);
-            document.getElementById('streakCount').innerText = streak;
-            
-            const notif = document.createElement('div');
-            notif.style.cssText = 'position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#1a1a1a; color:white; padding:12px 24px; border-radius:40px; z-index:2000; font-size:14px;';
-            notif.innerHTML = `🔥 ${streak} day streak! Keep going!`;
-            document.body.appendChild(notif);
-            setTimeout(() => notif.remove(), 2500);
+    function showAllArticles() {
+        filterArticles('all');
+    }
+
+    function filterByCategory(category) {
+        filterArticles(category);
+    }
+
+    // ========== STUDY STREAK ==========
+    function setupStudyStreak() {
+        let streak = localStorage.getItem('studyStreak') || 0;
+        document.getElementById('streakCount').innerText = streak;
+    }
+
+    function incrementStreak() {
+        let streak = parseInt(localStorage.getItem('studyStreak') || 0);
+        const lastCheck = localStorage.getItem('lastStreakDate');
+        const today = new Date().toDateString();
+        
+        if (lastCheck === today) {
+            alert("✅ You've already checked in today! Come back tomorrow.");
+            return;
         }
+        
+        streak++;
+        localStorage.setItem('studyStreak', streak);
+        localStorage.setItem('lastStreakDate', today);
+        document.getElementById('streakCount').innerText = streak;
+        
+        const notif = document.createElement('div');
+        notif.style.cssText = 'position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#1a1a1a; color:white; padding:12px 24px; border-radius:40px; z-index:2000; font-size:14px;';
+        notif.innerHTML = `🔥 ${streak} day streak! Keep going!`;
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 2500);
+    }
 
-        // ========== UPDATE STATS ==========
-        function updateStats() {
-            document.getElementById('articleCount').innerText = allArticles.length;
-            const clips = JSON.parse(localStorage.getItem('commonplaceClips') || '[]');
-            document.getElementById('clipCount').innerText = clips.length;
+    // ========== UPDATE STATS ==========
+    function updateStats() {
+        document.getElementById('articleCount').innerText = allArticles.length;
+        const clips = JSON.parse(localStorage.getItem('commonplaceClips') || '[]');
+        document.getElementById('clipCount').innerText = clips.length;
+    }
+
+    // ========== THEME TOGGLE ==========
+    function toggleTheme() {
+        const body = document.body;
+        const btn = document.getElementById('themeToggle');
+        if (body.style.background === 'rgb(26, 26, 26)' || body.style.backgroundColor === 'rgb(26, 26, 26)') {
+            body.style.background = '#ffffff';
+            body.style.color = '#1a1a1a';
+            btn.innerHTML = '<i class="far fa-moon"></i>';
+        } else {
+            body.style.background = '#1a1a1a';
+            body.style.color = '#e0e0e0';
+            btn.innerHTML = '<i class="far fa-sun"></i>';
         }
+    }
 
-        // ========== THEME TOGGLE ==========
-        function toggleTheme() {
-            const body = document.body;
-            const btn = document.getElementById('themeToggle');
-            if (body.style.background === 'rgb(26, 26, 26)' || body.style.backgroundColor === 'rgb(26, 26, 26)') {
-                body.style.background = '#ffffff';
-                body.style.color = '#1a1a1a';
-                btn.innerHTML = '<i class="far fa-moon"></i>';
-            } else {
-                body.style.background = '#1a1a1a';
-                body.style.color = '#e0e0e0';
-                btn.innerHTML = '<i class="far fa-sun"></i>';
-            }
+    // ========== CHECK ADMIN ==========
+    function checkAdminStatus() {
+        if (localStorage.getItem('adminLoggedIn') === 'true') {
+            const writeBtn = document.getElementById('writeBtn');
+            if (writeBtn) writeBtn.style.display = 'inline-block';
         }
+    }
 
-        // ========== CHECK ADMIN ==========
-        function checkAdminStatus() {
-            if (localStorage.getItem('adminLoggedIn') === 'true') {
-                document.getElementById('writeBtn').style.display = 'inline-block';
-            }
-        }
+    // ========== INITIALIZE ==========
+    document.addEventListener('DOMContentLoaded', () => {
+        loadArticles();
+        setupStudyStreak();
+        checkAdminStatus();
+    });
 
-        // ========== INITIALIZE ==========
-        document.addEventListener('DOMContentLoaded', () => {
-            loadArticles();
-            setupStudyStreak();
-            checkAdminStatus();
-        });
-
-        // Make functions global
-        window.openArticle = openArticle;
-        window.filterArticles = filterArticles;
-        window.incrementStreak = incrementStreak;
-        window.toggleTheme = toggleTheme;
-        window.openCommonplaceBook = openCommonplaceBook;
-        window.clipToCommonplace = clipToCommonplace;
-    </script>
+    // Make functions global
+    window.openArticle = openArticle;
+    window.filterArticles = filterArticles;
+    window.filterByCategory = filterByCategory;
+    window.showAllArticles = showAllArticles;
+    window.incrementStreak = incrementStreak;
+    window.toggleTheme = toggleTheme;
+    window.openCommonplaceBook = openCommonplaceBook;
+    window.clipToCommonplace = clipToCommonplace;
+</script>
     <script src="js/commonplace.js"></script>
 </body>
 </html>
