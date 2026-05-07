@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Study Chronicle | Modern Learning Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <title>The Study Chronicle | Daily Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* RESET & GLOBAL */
         * {
             margin: 0;
             padding: 0;
@@ -14,26 +15,147 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #f7fafc;
-            color: #1a202c;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.5;
         }
 
-        /* Header */
+        /* Premium Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
+
+        /* ========== HEADER ========== */
         .site-header {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-            color: white;
-            padding: 20px 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #eaeaea;
+            z-index: 1000;
         }
 
         .header-container {
-            max-width: 1400px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a4a4a;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background 0.2s;
+            color: #4a4a4a;
+        }
+
+        .icon-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .write-btn {
+            background: #1a1a1a;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .write-btn:hover {
+            background: #333;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 48px 32px 32px;
+        }
+
+        .hero h2 {
+            font-size: 44px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            font-family: 'Source Serif 4', serif;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+        }
+
+        /* ========== STATS BAR ========== */
+        .stats-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px 32px;
+        }
+
+        .stats-grid {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -41,226 +163,272 @@
             gap: 20px;
         }
 
-        .logo h1 {
-            font-size: 28px;
-            font-weight: 700;
-        }
-
-        .logo p {
-            font-size: 12px;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
-
-        /* Navigation */
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .main-nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .main-nav a:hover {
-            color: #4299e1;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: #4299e1;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #3182ce;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #4299e1;
-            color: #4299e1;
-        }
-
-        .btn-outline:hover {
-            background: #4299e1;
-            color: white;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 20px;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Stats Bar */
-        .stats-bar {
-            background: white;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            border-bottom: 1px solid #e2e8f0;
-            position: sticky;
-            top: 80px;
-            background: white;
-            z-index: 90;
-        }
-
-        .stat-item {
+        .stat-card {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .stat-number {
-            font-size: 24px;
-            font-weight: 700;
-            color: #4299e1;
-        }
-
-        .stat-label {
-            color: #4a5568;
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px;
-        }
-
-        /* Section Title */
-        .section-title {
-            font-size: 32px;
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: #4299e1;
-            border-radius: 2px;
-        }
-
-        /* Article Grid */
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        /* Article Card */
-        .article-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-
-        .article-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background: #e2e8f0;
-        }
-
-        .article-content {
-            padding: 25px;
-        }
-
-        .article-category {
-            display: inline-block;
-            padding: 4px 12px;
-            background: #ebf8ff;
-            color: #4299e1;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .article-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.3;
-            color: #1a202c;
-        }
-
-        .article-excerpt {
-            color: #4a5568;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .read-more {
-            color: #4299e1;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .read-more:hover {
             gap: 12px;
         }
 
-        /* Modal for Full Article */
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .stat-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .stat-info p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .streak-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .streak-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* ========== MAIN LAYOUT ========== */
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px 64px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin: 48px 0 24px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .section-header span {
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* ========== FEATURED ARTICLE (HERO CARD) ========== */
+        .featured-article {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            background: #fafaf9;
+            border-radius: 28px;
+            overflow: hidden;
+            margin-bottom: 48px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .featured-article:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .featured-content {
+            padding: 48px;
+        }
+
+        .featured-tag {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            font-size: 11px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .featured-title {
+            font-family: 'Source Serif 4', serif;
+            font-size: 38px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .featured-excerpt {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 350px;
+        }
+
+        /* ========== ARTICLE GRID (MULTIPLE STYLES) ========== */
+        
+        /* Grid 1: Standard 3-column */
+        .grid-standard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 56px;
+        }
+
+        /* Grid 2: 2-column (for certain categories) */
+        .grid-two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 56px;
+        }
+
+        /* Article Card Variations */
+        .card-large {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid #eee;
+        }
+
+        .card-large:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+            border-color: #ddd;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .card-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #c47b4a;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-family: 'Source Serif 4', serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .card-excerpt {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .card-readmore {
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a1a1a;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Horizontal Card */
+        .card-horizontal {
+            display: flex;
+            gap: 24px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .card-horizontal:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-color: #ddd;
+        }
+
+        .card-horizontal .card-image {
+            width: 200px;
+            height: 160px;
+            flex-shrink: 0;
+        }
+
+        .card-horizontal .card-content {
+            padding: 20px 20px 20px 0;
+        }
+
+        /* Minimal Card (for side column) */
+        .card-minimal {
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+        }
+
+        .card-minimal:last-child {
+            border-bottom: none;
+        }
+
+        .card-minimal .card-category {
+            font-size: 10px;
+        }
+
+        .card-minimal .card-title {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        /* ========== LOADING STATE ========== */
+        .loading-state {
+            text-align: center;
+            padding: 80px;
+            color: #999;
+        }
+
+        /* ========== MODAL (READING VIEW) ========== */
         .modal {
             display: none;
             position: fixed;
@@ -268,21 +436,31 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
             overflow-y: auto;
         }
 
-        .modal-content {
-            max-width: 900px;
-            margin: 50px auto;
+        .modal-container {
+            max-width: 780px;
+            margin: 40px auto;
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
         }
 
-        .modal-header {
-            position: relative;
+        .modal-close {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .modal-image {
@@ -291,170 +469,449 @@
             object-fit: cover;
         }
 
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .close-modal:hover {
-            background: red;
-        }
-
         .modal-body {
-            padding: 40px;
+            padding: 48px;
+        }
+
+        .modal-category {
+            font-size: 12px;
+            color: #c47b4a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .modal-title {
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-family: 'Source Serif 4', serif;
+            font-size: 42px;
+            line-height: 1.2;
+            margin: 16px 0;
+        }
+
+        .modal-meta {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #eee;
         }
 
         .modal-text {
             font-size: 18px;
-            line-height: 1.8;
-            color: #2d3748;
+            line-height: 1.7;
+            font-family: 'Source Serif 4', serif;
+            color: #2c2c2c;
         }
 
-        /* Admin Panel Access */
-        .admin-floating-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #4299e1;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-            z-index: 90;
+        .modal-text p {
+            margin-bottom: 24px;
         }
 
-        .admin-floating-btn:hover {
-            transform: scale(1.1);
-            background: #3182ce;
-        }
-
-        /* Footer */
+        /* ========== FOOTER ========== */
         .footer {
-            background: #1a202c;
-            color: white;
+            background: #fafaf9;
+            padding: 48px 32px;
             text-align: center;
-            padding: 40px;
-            margin-top: 60px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .grid-standard {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .articles-grid {
+            .grid-standard {
                 grid-template-columns: 1fr;
             }
-            
-            .header-container {
-                flex-direction: column;
-                text-align: center;
+            .grid-two-column {
+                grid-template-columns: 1fr;
             }
-            
-            .hero h1 {
-                font-size: 32px;
+            .card-horizontal {
+                flex-direction: column;
+            }
+            .card-horizontal .card-image {
+                width: 100%;
+                height: 200px;
+            }
+            .header-container {
+                padding: 12px 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .featured-content {
+                padding: 32px;
+            }
+            .featured-title {
+                font-size: 28px;
+            }
+            .modal-body {
+                padding: 24px;
+            }
+            .modal-title {
+                font-size: 28px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- HEADER -->
     <header class="site-header">
         <div class="header-container">
             <div class="logo">
-                <h1>📚 The Study Chronicle</h1>
-                <p>Your Daily Learning Companion</p>
+                <h1>Study Chronicle</h1>
             </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#" onclick="showHome()">🏠 Home</a></li>
-                    <li><a href="#" onclick="showCategory('academics')">📖 Academics</a></li>
-                    <li><a href="#" onclick="showCategory('technology')">💻 Technology</a></li>
-                    <li><a href="#" onclick="showCategory('campus')">🎓 Campus</a></li>
-                    <li><a href="#" onclick="showCommonplaceBook()">📔 My Commonplace Book</a></li>
-                </ul>
-            </nav>
-            <div class="action-buttons">
-                <a href="admin/index.html" class="btn btn-outline">
-                    <i class="fas fa-lock"></i> Admin Login
-                </a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="filterArticles('all')">Home</a></li>
+                <li><a href="#" onclick="filterArticles('academics')">Academics</a></li>
+                <li><a href="#" onclick="filterArticles('technology')">Tech</a></li>
+                <li><a href="#" onclick="filterArticles('campus')">Campus</a></li>
+                <li><a href="#" onclick="openCommonplaceBook()">Commonplace</a></li>
+            </ul>
+            <div class="header-actions">
+                <button class="icon-btn" onclick="toggleTheme()" id="themeToggle">
+                    <i class="far fa-moon"></i>
+                </button>
+                <a href="admin/index.html" class="write-btn" id="writeBtn" style="display: none;">✍️ Write</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section class="hero">
-        <h1>📖 Knowledge at Your Fingertips</h1>
-        <p>Curated study materials, news, and resources for modern learners</p>
+        <h2>Knowledge,<br>beautifully curated.</h2>
+        <p>Deep dives, smart insights, and thoughtful stories for lifelong learners.</p>
     </section>
 
-    <!-- Stats Bar -->
-    <div class="stats-bar">
-        <div class="stat-item">
-            <i class="fas fa-newspaper" style="font-size: 24px; color: #4299e1;"></i>
-            <div>
-                <div class="stat-number" id="articleCount">0</div>
-                <div class="stat-label">Articles</div>
+    <!-- STATS -->
+    <div class="stats-wrapper">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+                <div class="stat-info">
+                    <h3 id="articleCount">0</h3>
+                    <p>Articles</p>
+                </div>
             </div>
-        </div>
-        <div class="stat-item">
-            <i class="fas fa-fire" style="font-size: 24px; color: #f59e0b;"></i>
-            <div>
-                <div class="stat-number" id="streakCount">0</div>
-                <div class="stat-label">Day Streak</div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-fire"></i></div>
+                <div class="stat-info">
+                    <h3 id="streakCount">0</h3>
+                    <p>Day streak</p>
+                </div>
             </div>
-        </div>
-        <div class="stat-item">
-            <i class="fas fa-bookmark" style="font-size: 24px; color: #10b981;"></i>
-            <div>
-                <div class="stat-number" id="clipCount">0</div>
-                <div class="stat-label">Saved Notes</div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-bookmark"></i></div>
+                <div class="stat-info">
+                    <h3 id="clipCount">0</h3>
+                    <p>Saved notes</p>
+                </div>
             </div>
+            <button class="streak-btn" onclick="incrementStreak()">
+                <i class="fas fa-check-circle"></i> Check in today
+            </button>
         </div>
-        <button onclick="incrementStreak()" class="btn btn-primary" style="padding: 8px 16px;">
-            <i class="fas fa-check"></i> Check-in Today
-        </button>
     </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <h2 class="section-title">📰 Latest Articles</h2>
-        <div class="articles-grid" id="articlesGrid">
-            <!-- Articles will load here -->
-            <div style="text-align: center; padding: 50px;">Loading amazing content...</div>
-        </div>
-    </main>
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <!-- Featured Article Section -->
+        <div id="featuredSection"></div>
 
-    <!-- Footer -->
+        <!-- Section 1: Latest Articles (Grid) -->
+        <div class="section-header">
+            <h2>Latest reads</h2>
+            <span>Fresh perspectives</span>
+        </div>
+        <div id="articlesGrid" class="grid-standard"></div>
+
+        <!-- Section 2: Must Read (Horizontal cards) -->
+        <div class="section-header">
+            <h2>Must read</h2>
+            <span>Editor's picks</span>
+        </div>
+        <div id="mustReadGrid" class="grid-two-column"></div>
+    </div>
+
+    <!-- FOOTER -->
     <footer class="footer">
-        <p>© 2026 The Study Chronicle | Empowering Students Worldwide</p>
-        <p style="margin-top: 10px; opacity: 0.7;">✍️ Read, Learn, Grow</p>
+        <p>© 2026 Study Chronicle — Read with purpose.</p>
     </footer>
 
-    <!-- Floating Admin Button -->
-    <div class="admin-floating-btn" onclick="window.location.href='admin/index.html'">
-        <i class="fas fa-pen" style="font-size: 24px;"></i>
-    </div>
+    <script>
+        // ========== DATA & STATE ==========
+        let allArticles = [];
+        let currentFilter = 'all';
 
-    <script src="js/main.js"></script>
+        // ========== LOAD ARTICLES ==========
+        function loadArticles() {
+            const saved = localStorage.getItem('studyArticles');
+            if (saved && JSON.parse(saved).length > 0) {
+                allArticles = JSON.parse(saved);
+            } else {
+                // Default premium articles
+                allArticles = [
+                    {
+                        id: 1,
+                        title: "The Science of Deep Learning",
+                        excerpt: "How your brain actually retains information — and the habits that rewire it for peak performance.",
+                        content: "<p>For decades, we've misunderstood how learning works. The old model of repetition and review has been replaced by something far more nuanced...</p><p>Neuroplasticity—the brain's ability to reorganize itself—is the foundation of all learning. When you learn something new, your neurons form new connections. These connections strengthen with use and fade without it.</p><p>The key insight? Active recall and spaced repetition aren't just study techniques—they're biological necessities for memory formation.</p>",
+                        image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600",
+                        category: "academics",
+                        date: new Date().toISOString(),
+                        author: "Dr. Sarah Chen"
+                    },
+                    {
+                        id: 2,
+                        title: "Beyond the Algorithm: AI in Education",
+                        excerpt: "How artificial intelligence is becoming a personalized tutor for millions of students worldwide.",
+                        content: "<p>The classroom of tomorrow is already here. AI tutors can now adapt to your learning pace, identify gaps in understanding, and provide instant feedback—all without judgment.</p><p>Tools like Khanmigo, ChatGPT, and Claude are transforming self-directed learning. Students who use these tools report higher engagement and better retention.</p><p>But the real revolution isn't the technology—it's the access. For the first time, every student can have a personal tutor available 24/7.</p>",
+                        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600",
+                        category: "technology",
+                        date: new Date().toISOString(),
+                        author: "Marcus Wright"
+                    },
+                    {
+                        id: 3,
+                        title: "The Library of the Future",
+                        excerpt: "Campus libraries are transforming from quiet warehouses to vibrant learning hubs—here's what's changing.",
+                        content: "<p>Gone are the days of dusty stacks and stern librarians. Today's academic libraries are collaboration spaces, digital media labs, and innovation centers.</p><p>From 3D printing to podcast studios, libraries are becoming the heart of campus innovation. Students can now check out laptops, cameras, and even VR equipment.</p><p>The quiet study room isn't disappearing—it's just getting competition from group collaboration spaces, presentation practice rooms, and digital scholarship centers.</p>",
+                        image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600",
+                        category: "campus",
+                        date: new Date().toISOString(),
+                        author: "Elena Rodriguez"
+                    },
+                    {
+                        id: 4,
+                        title: "Reading Better: A Guide",
+                        excerpt: "Speed isn't everything. Here's how to read with depth, retention, and joy.",
+                        content: "<p>Most of us read the wrong way. We scan, we skim, we scroll—but we don't truly absorb. The best readers are slow, intentional, and curious.</p><p>Research shows that reading on paper improves comprehension compared to screens. But digital tools offer advantages like highlighting, note-taking, and search.</p><p>The solution? Hybrid reading: use digital for discovery and annotation, print for deep dives and retention.</p>",
+                        image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600",
+                        category: "academics",
+                        date: new Date().toISOString(),
+                        author: "James Clear"
+                    },
+                    {
+                        id: 5,
+                        title: "Why Handwritten Notes Work",
+                        excerpt: "The cognitive benefits of putting pen to paper—backed by neuroscience.",
+                        content: "<p>Typing is faster, but handwriting is better for memory. Studies show that students who take handwritten notes retain more information than those who type.</p><p>Why? Writing by hand forces your brain to process and paraphrase information rather than transcribing it verbatim. That extra processing creates stronger neural pathways.</p><p>Digital tools have their place, but don't abandon your notebook just yet.</p>",
+                        image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600",
+                        category: "academics",
+                        date: new Date().toISOString(),
+                        author: "Natalie Wong"
+                    },
+                    {
+                        id: 6,
+                        title: "The Attention Economy",
+                        excerpt: "How social media is rewiring your focus—and how to take it back.",
+                        content: "<p>Your attention is being fought over by the world's smartest engineers. Every notification, every infinite scroll, every autoplay video is designed to keep you engaged.</p><p>But you can fight back. Digital minimalism, focus modes, and scheduled distraction time can help you reclaim your attention for what matters.</p><p>Start small: one hour of phone-free deep work each morning. The results may surprise you.</p>",
+                        image: "https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600",
+                        category: "technology",
+                        date: new Date().toISOString(),
+                        author: "Johann Hari"
+                    }
+                ];
+                saveArticles();
+            }
+            renderAll();
+            updateStats();
+        }
+
+        function saveArticles() {
+            localStorage.setItem('studyArticles', JSON.stringify(allArticles));
+        }
+
+        // ========== RENDER FUNCTIONS ==========
+        function renderAll() {
+            renderFeatured();
+            renderLatestGrid();
+            renderMustRead();
+        }
+
+        function renderFeatured() {
+            const container = document.getElementById('featuredSection');
+            if (allArticles.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+            const featured = allArticles[0];
+            container.innerHTML = `
+                <div class="featured-article" onclick="openArticle(${featured.id})">
+                    <div class="featured-content">
+                        <div class="featured-tag">Featured</div>
+                        <h2 class="featured-title">${featured.title}</h2>
+                        <p class="featured-excerpt">${featured.excerpt}</p>
+                        <div class="featured-meta">
+                            <span><i class="far fa-user"></i> ${featured.author}</span>
+                            <span><i class="far fa-calendar"></i> ${new Date(featured.date).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                    <img src="${featured.image}" class="featured-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
+                </div>
+            `;
+        }
+
+        function renderLatestGrid() {
+            const container = document.getElementById('articlesGrid');
+            const filtered = currentFilter === 'all' ? allArticles.slice(1, 7) : allArticles.filter(a => a.category === currentFilter).slice(0, 6);
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px;">No articles found.</div>';
+                return;
+            }
+
+            container.innerHTML = filtered.map(article => `
+                <div class="card-large" onclick="openArticle(${article.id})">
+                    <img src="${article.image}" class="card-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
+                    <div class="card-content">
+                        <div class="card-category">${article.category}</div>
+                        <h3 class="card-title">${article.title}</h3>
+                        <p class="card-excerpt">${article.excerpt.substring(0, 100)}...</p>
+                        <span class="card-readmore">Read more →</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderMustRead() {
+            const container = document.getElementById('mustReadGrid');
+            const mustReadArticles = allArticles.slice(3, 7);
+            
+            if (mustReadArticles.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = mustReadArticles.map(article => `
+                <div class="card-horizontal" onclick="openArticle(${article.id})">
+                    <img src="${article.image}" class="card-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
+                    <div class="card-content">
+                        <div class="card-category">${article.category}</div>
+                        <h3 class="card-title">${article.title}</h3>
+                        <p class="card-excerpt">${article.excerpt.substring(0, 120)}...</p>
+                        <span class="card-readmore">Continue reading →</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ========== FILTER FUNCTION ==========
+        function filterArticles(category) {
+            currentFilter = category;
+            renderLatestGrid();
+            document.querySelector('.hero h2').innerHTML = category === 'all' ? 'Knowledge,<br>beautifully curated.' : `${category.charAt(0).toUpperCase() + category.slice(1)}<br>exploring ${category}`;
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+        }
+
+        // ========== OPEN ARTICLE MODAL ==========
+        function openArticle(articleId) {
+            const article = allArticles.find(a => a.id === articleId);
+            if (!article) return;
+
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <button class="modal-close" onclick="this.closest('.modal').remove()">×</button>
+                <div class="modal-container">
+                    <img src="${article.image}" class="modal-image" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4f4173?w=600'">
+                    <div class="modal-body">
+                        <div class="modal-category">${article.category.toUpperCase()}</div>
+                        <h1 class="modal-title">${article.title}</h1>
+                        <div class="modal-meta">${new Date(article.date).toLocaleDateString()} · by ${article.author}</div>
+                        <div class="modal-text">${article.content}</div>
+                        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
+                            <button onclick="clipToCommonplace('${article.title.replace(/'/g, "\\'")}', '${article.excerpt.replace(/'/g, "\\'")}')" style="background:#1a1a1a; color:white; border:none; padding:12px 24px; border-radius:40px; cursor:pointer; font-size:14px;">
+                                📌 Save to Commonplace Book
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+        }
+
+        // ========== STUDY STREAK ==========
+        function setupStudyStreak() {
+            let streak = localStorage.getItem('studyStreak') || 0;
+            document.getElementById('streakCount').innerText = streak;
+        }
+
+        function incrementStreak() {
+            let streak = parseInt(localStorage.getItem('studyStreak') || 0);
+            const lastCheck = localStorage.getItem('lastStreakDate');
+            const today = new Date().toDateString();
+            
+            if (lastCheck === today) {
+                alert("✅ You've already checked in today! Come back tomorrow.");
+                return;
+            }
+            
+            streak++;
+            localStorage.setItem('studyStreak', streak);
+            localStorage.setItem('lastStreakDate', today);
+            document.getElementById('streakCount').innerText = streak;
+            
+            const notif = document.createElement('div');
+            notif.style.cssText = 'position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#1a1a1a; color:white; padding:12px 24px; border-radius:40px; z-index:2000; font-size:14px;';
+            notif.innerHTML = `🔥 ${streak} day streak! Keep going!`;
+            document.body.appendChild(notif);
+            setTimeout(() => notif.remove(), 2500);
+        }
+
+        // ========== UPDATE STATS ==========
+        function updateStats() {
+            document.getElementById('articleCount').innerText = allArticles.length;
+            const clips = JSON.parse(localStorage.getItem('commonplaceClips') || '[]');
+            document.getElementById('clipCount').innerText = clips.length;
+        }
+
+        // ========== THEME TOGGLE ==========
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('themeToggle');
+            if (body.style.background === 'rgb(26, 26, 26)' || body.style.backgroundColor === 'rgb(26, 26, 26)') {
+                body.style.background = '#ffffff';
+                body.style.color = '#1a1a1a';
+                btn.innerHTML = '<i class="far fa-moon"></i>';
+            } else {
+                body.style.background = '#1a1a1a';
+                body.style.color = '#e0e0e0';
+                btn.innerHTML = '<i class="far fa-sun"></i>';
+            }
+        }
+
+        // ========== CHECK ADMIN ==========
+        function checkAdminStatus() {
+            if (localStorage.getItem('adminLoggedIn') === 'true') {
+                document.getElementById('writeBtn').style.display = 'inline-block';
+            }
+        }
+
+        // ========== INITIALIZE ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            loadArticles();
+            setupStudyStreak();
+            checkAdminStatus();
+        });
+
+        // Make functions global
+        window.openArticle = openArticle;
+        window.filterArticles = filterArticles;
+        window.incrementStreak = incrementStreak;
+        window.toggleTheme = toggleTheme;
+        window.openCommonplaceBook = openCommonplaceBook;
+        window.clipToCommonplace = clipToCommonplace;
+    </script>
     <script src="js/commonplace.js"></script>
 </body>
 </html>
