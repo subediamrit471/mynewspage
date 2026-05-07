@@ -1,1 +1,108 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Study Chronicle</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .admin-panel {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #d4c5a9;
+            font-family: 'Indie Flower', cursive;
+            font-size: 16px;
+        }
+        .login-form {
+            text-align: center;
+        }
+        .password-input {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-panel" id="loginPanel">
+        <h1>🔐 Admin Login</h1>
+        <p>Enter your password to add study content</p>
+        <input type="password" id="password" class="password-input" placeholder="Enter admin password">
+        <button onclick="login()" class="tool-btn">Login</button>
+    </div>
+    
+    <div class="admin-panel" id="dashboardPanel" style="display:none;">
+        <h1>✍️ Add Study Content</h1>
+        <form id="contentForm">
+            <input type="text" id="title" placeholder="Article Title" required>
+            <textarea id="content" rows="10" placeholder="Write your study content here... (supports markdown)"></textarea>
+            <input type="text" id="imageUrl" placeholder="Image URL (optional)">
+            <button type="submit" class="tool-btn">📤 Publish to Website</button>
+        </form>
+        <hr style="margin: 20px 0;">
+        <h2>📊 Quick Stats</h2>
+        <p>Study Streak: <span id="adminStreak"></span></p>
+        <p>Commonplace Clips: <span id="adminClips"></span></p>
+        <button onclick="logout()" style="background:#dc3545;">🚪 Logout</button>
+    </div>
+    
+    <script>
+        const ADMIN_PASSWORD = 'study123'; // CHANGE THIS PASSWORD!
+        
+        function login() {
+            const pwd = document.getElementById('password').value;
+            if (pwd === ADMIN_PASSWORD) {
+                localStorage.setItem('isAdminLoggedIn', 'true');
+                document.getElementById('loginPanel').style.display = 'none';
+                document.getElementById('dashboardPanel').style.display = 'block';
+                loadStats();
+            } else {
+                alert('Wrong password!');
+            }
+        }
+        
+        function loadStats() {
+            const streak = localStorage.getItem('studyStreak') || 0;
+            const clips = JSON.parse(localStorage.getItem('commonplaceClips') || '[]');
+            document.getElementById('adminStreak').innerText = streak;
+            document.getElementById('adminClips').innerText = clips.length;
+        }
+        
+        document.getElementById('contentForm').onsubmit = function(e) {
+            e.preventDefault();
+            const newArticle = {
+                title: document.getElementById('title').value,
+                content: document.getElementById('content').value,
+                image: document.getElementById('imageUrl').value,
+                summary: document.getElementById('content').value.substring(0, 150)
+            };
+            
+            // Save to localStorage for now (you can later save to JSON file)
+            const articles = JSON.parse(localStorage.getItem('studyArticles') || '[]');
+            articles.unshift(newArticle);
+            localStorage.setItem('studyArticles', JSON.stringify(articles));
+            
+            alert('✅ Content published! It will appear on the main page.');
+            this.reset();
+        };
+        
+        function logout() {
+            localStorage.removeItem('isAdminLoggedIn');
+            window.location.href = '../index.html';
+        }
+        
+        // Check if already logged in
+        if (localStorage.getItem('isAdminLoggedIn') === 'true') {
+            document.getElementById('loginPanel').style.display = 'none';
+            document.getElementById('dashboardPanel').style.display = 'block';
+            loadStats();
+        }
+    </script>
+</body>
+</html>
