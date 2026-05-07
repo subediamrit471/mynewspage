@@ -1,1 +1,17 @@
+backend:
+  name: git-gateway
+  branch: main
 
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "articles"
+    label: "Study Articles"
+    folder: "data"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Content", name: "content", widget: "markdown"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Subject", name: "subject", widget: "select", options: ["Math", "Science", "History", "Literature"]}
